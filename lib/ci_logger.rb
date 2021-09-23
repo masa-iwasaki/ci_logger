@@ -16,6 +16,8 @@ begin
     end
 
     def example_finished(notification)
+      return unless Rails.application.config.ci_logger.enabled
+
       example = notification.example
 
       if example.execution_result.status == :failed
